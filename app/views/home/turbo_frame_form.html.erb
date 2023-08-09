@@ -1,0 +1,20 @@
+<section>
+
+    <%= turbo_frame_tag 'umframe' do %>
+
+      <div>
+          <h2>Frame substituto, será novamente substituido quando você apertar em enviar</h2>
+          <%= form_with scope: :any, url: turbo_frame_submit_path, local: true do |form| %>
+              <%= form.label :qualquer_palavra, 'Digite uma palavra', 'class' => 'my-0  d-inline' %>
+              <%= form.text_field :qualquer_palavra, 'required' => 'true', 'value' => "#{local_assigns[:qualquer_palavra] || ''}",  'aria-describedby' => 'qualquer_palavra' %>
+              <%= form.submit 'enviar', 'id' => 'submit-word' %>
+          <% end %>
+      </div>
+      <div>
+        <h2>Dados da view</h2>
+        <pre style="font-size: .7rem;"><%= JSON.pretty_generate(local_assigns) %></pre>
+      </div>
+
+    <% end %>
+
+</section>

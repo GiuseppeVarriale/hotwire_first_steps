@@ -1,5 +1,15 @@
-
 <h1>Bem vindo a Home Page</h1>
 <div>
   <%= link_to "ir para pagina de Clientes", customers_path %>
 </div>
+<%= turbo_frame_tag 'umframe' do %>
+  <div>
+    <h2>Frame inicial, este frame será alterado quando clicar no submit</h2>
+    <%= form_with scope: :any, url: turbo_frame_submit_path, local: true do |form| %>
+      <%= form.label :qualquer_palavra, 'Digite uma palavra', 'class' => 'my-0  d-inline' %>
+      <%= form.text_field :qualquer_palavra, type: 'input', 'required' => 'true',
+      'value' => "#{local_assigns[:qualquer_palavra] || ''}",  'aria-describedby' => 'qualquer_palavra' %>
+      <%= form.submit 'enviar', 'id' => 'submit-word' %>
+    <% end %>
+  </div>
+<% end %>
