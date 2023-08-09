@@ -1,5 +1,12 @@
 <h1>Bem vindo a página de Clientes</h1>
 
-<div>
-  <%= link_to "ir para home page", root_path %>
+<div><%= link_to "ir para home page", root_path %></div>
+
+<div style="margin-top: 3rem;">
+  <%= form_with scope: :any, url: post_something_path do |form| %>
+      <%= form.submit 'Enviar algo via POST' %>
+  <% end %>
+  <turbo-frame id="alguma_coisa">
+    <div>Uma informação por enquanto vazia</div>
+  </turbo-frame>
 </div>
